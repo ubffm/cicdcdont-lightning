@@ -1,0 +1,234 @@
+\begin{tikzpicture}[
+	start chain=trunk going right,
+	diagram item/.style={%
+		on chain,
+		join
+	},
+	every join/.style={very thick}
+	]
+
+	\visible<1-2,4-8,10->{%
+	\node [
+		diagram item,
+		label={[align=center]below:Admin\\Workstation}
+		]
+		(admin-workstation)
+		{\includegraphics{cisco_icons/laptop}};
+	}
+
+	\node [
+		diagram item,
+		label=below:Repository,
+		]
+		(repository)
+		{\includegraphics{cisco_icons/fileserver}};
+
+	\visible<2-2,8-8>{%
+	\node [
+		start branch=impersonation going above left,
+		diagram item,
+		]
+		{%
+			\includegraphics[
+				keepaspectratio,
+				height=1.3cm,
+				width=1.3cm
+			]{Hut_red}
+		};
+	}
+
+	\visible<3-3,9-9>{%
+	\node [
+		left=of repository,
+		label=below:Evil Admin,
+		]
+		{%
+			\includegraphics[
+				keepaspectratio,
+				height=1.3cm,
+				width=1.3cm
+			]{Hut_red}
+		};
+	}
+
+	\node [
+		diagram item,
+		label={[align=center]below:Managment\\Host}
+		]
+		(managment-host)
+		{%
+			\includegraphics{cisco_icons/localdirector}
+		};
+
+	\node [
+		diagram item,
+		label=below:Prod,
+		name={env-prod}
+		]
+		(env-prod)
+		{%
+			\includegraphics{cisco_icons/mux}
+		};
+
+% Compromitations
+
+	\visible<4-4,10-10>{%
+	\node [
+		above=-1em of admin-workstation,
+		anchor=south,
+		] {%
+			\includegraphics[
+				keepaspectratio,
+				height=1.8em,
+				width=1.8em
+			]{Hut_red}
+		};
+	}
+
+	\visible<5-5,11-11>{%
+	\node [
+		above=-1em of repository,
+		anchor=south,
+		] {%
+			\includegraphics[
+				keepaspectratio,
+				height=1.8em,
+				width=1.8em
+			]{Hut_red}
+		};
+	}
+	\visible<6-6,12-12>{%
+	\node [
+		above=-1em of managment-host,
+		anchor=south,
+		] {%
+			\includegraphics[
+				keepaspectratio,
+				height=1.8em,
+				width=1.8em
+			]{Hut_red}
+		};
+	}
+	\visible<7-7,13-13>{%
+	\node [
+		above=-1em of env-prod,
+		anchor=south,
+		] {%
+			\includegraphics[
+				keepaspectratio,
+				height=1.8em,
+				width=1.8em
+			]{Hut_red}
+		};
+	}
+
+
+% Mitigations
+
+	\visible<8-8>{%
+	\node [
+		above=of repository,
+		label={[align=right]right:%
+			\begin{varwidth}{\linewidth}
+				\begin{itemize}
+					\item Strong authentification:
+					\begin{itemize}
+						\item Key based authentification
+						\item 2FA for passwords
+					\end{itemize}
+				\end{itemize}
+			\end{varwidth}
+		},
+		]
+		{};
+	}
+	\visible<9-9>{%
+	\node [
+		above=of repository,
+		label={[align=right]right:%
+			\begin{varwidth}{\linewidth}
+				\begin{itemize}
+					\item Privilege Separation:
+					\begin{itemize}
+						\item 2-man-rule
+						\item enforced tests
+					\end{itemize}
+				\end{itemize}
+			\end{varwidth}
+		},
+	] {};
+	}
+	\visible<10-10>{%
+	\node [
+		above=of repository,
+		label={[align=right]right:%
+			\begin{varwidth}{\linewidth}
+				\begin{itemize}
+					\item Hardening measures:
+					\begin{itemize}
+						\item using dedicated hardware
+						\item using hardware security modules
+					\end{itemize}
+				\end{itemize}
+			\end{varwidth}
+		},
+	] {};
+	}
+
+	\visible<11-11>{%
+	\node [
+		above=of repository,
+		label={[align=right]right:%
+			\begin{varwidth}{\linewidth}
+				\begin{itemize}
+					\item Privilege Separation:
+					\begin{itemize}
+						\item enforced offsite/offline backups
+					\end{itemize}
+					\item Signing of commits \\
+						and checking the signatures
+				\end{itemize}
+			\end{varwidth}
+		},
+	] {};
+	}
+
+	\visible<12-12>{%
+	\node [
+		above=of repository,
+		label={[align=right]right:%
+			\begin{varwidth}{\linewidth}
+				\begin{itemize}
+					\item Privilege Separation:
+					\begin{itemize}
+						\item enforced offsite/offline backups
+						\item splitting the infrastructure in groups
+						\item regular self checks/deploys
+					\end{itemize}
+				\end{itemize}
+			\end{varwidth}
+		},
+	] {};
+	}
+
+	\visible<13-13>{%
+	\node [
+		above=of repository,
+		label={[align=right]right:%
+			\begin{varwidth}{\linewidth}
+				\begin{itemize}
+					\item Privilege Separation:
+						\begin{itemize}
+							\item enforced offsite/offline backups
+						\end{itemize}
+					\item Reproducable builds
+						\begin{itemize}
+							\item JUST REDEPLOY AND RESTORE
+						\end{itemize}
+				\end{itemize}
+			\end{varwidth}
+		},
+	] {};
+	}
+
+\end{tikzpicture}

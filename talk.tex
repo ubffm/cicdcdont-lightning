@@ -1,0 +1,70 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\title{CI/CD/CDon't?}
+\subtitle{Deliberations on the threat model of continuous delivery systems}
+\date[CiderSecurityCon]{2020--03--14/15\\CiderSecurityCon}
+\institute[UBFFM]{\href{https://www.ub.uni-frankfurt.de}{Universit\"atsbibliothek Johann Christian Senckenberg}}
+\author[J
+	{\includegraphics[
+		keepaspectratio,
+		height=4pt
+		]
+		{icon.png}
+		}
+		]{Jens Heinrich}
+
+\usetheme{ubffm}
+\usepackage{tikz}
+\usetikzlibrary{chains}
+\usepackage{varwidth}
+\usepackage{qrcode}
+
+\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=1.0ex]{icon}}
+\defbeamertemplate{itemize subitem}{image}{\scriptsize\includegraphics[height=1.0ex]{icon}}
+\defbeamertemplate{itemize subsubitem}{image}{\tiny\includegraphics[height=1.0ex]{icon}}
+
+\setbeamertemplate{itemize item}[image]
+\setbeamertemplate{itemize subitem}[image]
+\setbeamertemplate{itemize subsubitem}[image]
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle<1-1>{Concept}
+
+	\frametitle<2-7>{Attackvectors}
+	\framesubtitle<2-2>{Impersonation}
+	\framesubtitle<3-3>{Evil Admin}
+	\framesubtitle<4-4>{Compromised Workstation}
+	\framesubtitle<5-5>{Compromised Repository}
+	\framesubtitle<6-6>{Compromised Managment Host}
+	\framesubtitle<7-7>{Compromised Prod}
+
+	\frametitle<8-13>{Mitigations}
+	\framesubtitle<8-8>{Impersonation}
+	\framesubtitle<9-9>{Evil Admin}
+	\framesubtitle<10-10>{Compromised Workstation}
+	\framesubtitle<11-11>{Compromised Repository}
+	\framesubtitle<12-12>{Compromised Managment Host}
+	\framesubtitle<13-13>{Compromised Prod}
+	\input{diagram.tex}
+\end{frame}
+
+\section{Contact}
+\begin{frame}
+	You may contact me
+	\begin{itemize}
+		\item via eMail \href{mailto://J.Heinrich@ub.uni-frankfurt.de}{\url{J.Heinrich@ub.uni-frankfurt.de}} \\
+			\qrcode{mailto://J.Heinrich@ub.uni-frankfurt.de}
+		\item our GitHub \href{https://github.com/ubffm/cicdcdont-lightning}{\url{github.com/ubffm/cicdcdont-lightning}} \\
+			\qrcode{https://github.com/ubffm/cicdcdont-lightning}
+		\item personally on the conference
+	\end{itemize}
+\end{frame}
+
+\end{document}
