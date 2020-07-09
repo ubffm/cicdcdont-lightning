@@ -43,6 +43,9 @@
 \setbeamertemplate{itemize subitem}[image]
 \setbeamertemplate{itemize subsubitem}[image]
 
+\usepackage{bookmark}
+\usepackage[backend=biber,]{biblatex}
+\addbibresource{talk.bib}
 \begin{document}
 
 \begin{frame}
@@ -81,4 +84,10 @@
 	\end{itemize}
 \end{frame}
 
+\section{Sources}
+\begin{frame}[allowframebreaks]{Sources}
+\nocite{*}
+\printbibliography
+
+\end{frame}
 \end{document}
